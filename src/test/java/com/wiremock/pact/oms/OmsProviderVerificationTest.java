@@ -32,8 +32,8 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 //        providerTags = "main",
 //        includeWipPactsSince = "2026-06-26"
 //)
-//@PactBroker(url = "http://localhost:9292")
-@PactFolder("target/pacts")
+@PactBroker(url = "http://localhost:9292")
+//@PactFolder("target/pacts")
 public class OmsProviderVerificationTest {
     @RegisterExtension
     private static final WireMockExtension wireMock =
