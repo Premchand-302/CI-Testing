@@ -23,18 +23,15 @@ jobs:
           echo "$HOME/pact/bin" >> $GITHUB_PATH
 
       - name: 1. Start Pact Broker
-        working-directory: WireMock
         run: |
           docker compose -f src/test/resources/docker-compose.pact-broker.yml down -v
           docker compose -f src/test/resources/docker-compose.pact-broker.yml up -d --wait
 
       - name: 2. Run Consumer Tests & Publish Contracts
-        working-directory: WireMock
         run: |
           mvn -Dtest=PosOmsConsumerPactTest test
 
       - name: 3. Consumer Publish Contracts to the Broker
-        working-directory: WireMock
         run: |
           pact-broker publish target/pacts \
             --consumer-app-version=${{ github.sha }} \
@@ -42,7 +39,6 @@ jobs:
             --broker-base-url=http://127.0.0.1:9292
 
       - name: 4. Run Provider Verification
-        working-directory: WireMock
         run: |
           mvn -Dtest=OmsProviderVerification \
               -Dgit.sha=${{ github.sha }} \
@@ -51,7 +47,6 @@ jobs:
               test
 
       - name: 5. Record provider deployment to production
-        working-directory: WireMock
         run: |
           pact-broker record-deployment \
             --pacticipant oms-provider \
@@ -60,7 +55,6 @@ jobs:
             --broker-base-url http://127.0.0.1:9292
 
       - name: 6. Can I deploy
-        working-directory: WireMock
         env:
           CONTRACT_VERSION: ${{ github.sha }}
         run: |
