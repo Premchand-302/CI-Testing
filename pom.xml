@@ -22,7 +22,7 @@
         <pact.publish.consumer.branchName>local</pact.publish.consumer.branchName>
         <slf4j.version>2.0.17</slf4j.version>
         <git.sha>local</git.sha>
-        <pact.verifier.publishResults>false</pact.verifier.publishResults>
+        <pact.verifier.publishResults>true</pact.verifier.publishResults>
         <pact.provider.branch>local</pact.provider.branch>
         <maven.surefire.version>3.5.6</maven.surefire.version>
     </properties>
