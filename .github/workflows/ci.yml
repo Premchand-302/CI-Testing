@@ -40,7 +40,7 @@ jobs:
 
       - name: 4. Run Provider Verification
         run: |
-          mvn -Dtest=OmsProviderVerification \
+          mvn -Dtest=OmsProviderVerificationTest \
               -Dgit.sha=${{ github.sha }} \
               -Dpactbroker.host=127.0.0.1 \
               -Dpactbroker.port=9292 \
