@@ -60,7 +60,7 @@ jobs:
           CONTRACT_VERSION: ${{ github.sha }}
         run: |
           pact-broker can-i-deploy \
-          --pacticipant pos-consumer \
+          --pacticipant POS \
           --version $CONTRACT_VERSION \
           --to-environment production \
           --broker-base-url http://127.0.0.1:9292
